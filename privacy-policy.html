@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>StyleSync Privacy Policy</title>
+<style>body{font-family:system-ui,sans-serif;max-width:720px;margin:2rem auto;padding:0 1rem;line-height:1.6}h1{color:#222}h2{margin-top:2rem;color:#333}.section{margin-bottom:1.5rem}</style>
+</head>
+<body>
+<h1>StyleSync Privacy Policy</h1>
+<p>Last updated: 2026-11-20</p>
+
+<div class="section">
+<h2>1. What we collect</h2>
+<p>StyleSync <strong>does not collect any personal data or usage telemetry</strong>. All operations happen locally on your machine.</p>
+<p>The only network call occurs when you activate a Pro license key against our verification endpoint (<code>snapmark-license.61960005.workers.dev</code>). This call transmits only the license key string (a short alphanumeric token), which our backend validates and returns a boolean validity result. No other data is sent.</p>
+</div>
+
+<div class="section">
+<h2>2. What data we store</h2>
+<ul>
+<li><strong>Settings JSON</strong> stored in your VS Code user-data directory (<code>%APPDATA%\Code\User</code> on Windows, equivalent paths elsewhere). Only the configuration value <code>stylesync.buyoutLink</code> (empty by default) and <code>stylesync.verifyEndpoint</code> are persisted.</li>
+<li><strong>Global state</strong> managed by VS Code: <code>sv_pro</code> (boolean, true when Pro is activated), <code>sv_license</code> (your Pro license key string, stored locally by VS Code).</li>
+</ul>
+<p>We do not create any files outside the standard VS Code user-data path, and we never upload your config files anywhere.</p>
+</div>
+
+<div class="section">
+<h2>3. Encryption &amp; passwords</h2>
+<p>Exported ZIP files are encrypted with AES-256-CBC using a key derived from your password via scrypt. Your password is entered in VS Code's secure input dialog and is <strong>never transmitted over the network</strong>. If you forget your password, there is no recovery — the data is irrecoverable by design.</p>
+</div>
+
+<div class="section">
+<h4>4. Third-party services</h4>
+<p>StyleSync uses the following third-party services:</p>
+<ul>
+<li><strong>Paddle Billing</strong> — processes payment for the Pro upgrade. See the Paddle Privacy Policy.</li>
+<li><strong>Cloudflare Workers</strong> — hosts the license verification API at <code>snapmark-license.61960005.workers.dev</code>. Cloudflare's standard logging applies to this endpoint.</li>
+</ul>
+<p>There is no third-party analytics, advertising, or tracking within StyleSync.</p>
+</div>
+
+<div class="section">
+<h2>5. Data retention</h2>
+<p>Since no user data leaves your machine, there is nothing for us to retain. The license verification log may contain the time of your last verification request; this is not linked to your identity and is used solely for operational monitoring.</p>
+</div>
+
+<div class="section">
+<h2>6. Contact</h2>
+<p>For privacy-related questions, email <strong>privacy@lxstudio.dev</strong>.</p>
+</div>
+
+<div class="section">
+<h2>7. Changes</h2>
+<p>We may update this policy. Continued use after changes constitutes acceptance of the new terms.</p>
+</div>
+</body>
+</html>
