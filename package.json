@@ -1,0 +1,80 @@
+{
+  "name": "stylesync-lx",
+  "displayName": "StyleSync — Local Config Sync",
+  "description": "Export and import VS Code config (settings, keybindings, snippets) as encrypted local ZIPs. No cloud. No Gist risk.",
+  "version": "1.0.0",
+  "publisher": "LxStudio",
+  "icon": "icon.png",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lm203688/stylesync-lx.git"
+  },
+  "engines": { "vscode": "^1.80.0" },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "settings sync",
+    "vscode config",
+    "config backup",
+    "encrypted zip",
+    "local sync",
+    "keybindings",
+    "snippets backup"
+  ],
+  "activationEvents": [
+    "onCommand:stylesync.exportConfig",
+    "onCommand:stylesync.importConfig",
+    "onView:stylesync-tree"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "stylesync.exportConfig", "title": "StyleSync: Export Config to Encrypted ZIP", "category": "StyleSync" },
+      { "command": "stylesync.importConfig", "title": "StyleSync: Import Config from ZIP", "category": "StyleSync" },
+      { "command": "stylesync.refreshTree", "title": "StyleSync: Refresh Config List", "category": "StyleSync" },
+      { "command": "stylesync.upgradeToPro", "title": "StyleSync: Upgrade to Pro", "category": "StyleSync" },
+      { "command": "stylesync.activatePro", "title": "StyleSync: Activate Pro", "category": "StyleSync" }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        { "id": "stylesync", "title": "StyleSync", "icon": "$(sync)" }
+      ]
+    },
+    "views": {
+      "stylesync": [
+        { "id": "stylesync-tree", "name": "Config Files" }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        { "command": "stylesync.exportConfig", "when": "view == stylesync-tree", "group": "navigation@1" },
+        { "command": "stylesync.importConfig", "when": "view == stylesync-tree", "group": "navigation@2" },
+        { "command": "stylesync.upgradeToPro", "when": "view == stylesync-tree", "group": "navigation@3" }
+      ]
+    },
+    "configuration": {
+      "title": "StyleSync",
+      "properties": {
+        "stylesync.verifyEndpoint": {
+          "type": "string",
+          "default": "https://snapmark-license.61960005.workers.dev/verify",
+          "description": "License verification endpoint."
+        },
+        "stylesync.buyoutLink": {
+          "type": "string",
+          "default": "https://snapmark-checkout.pages.dev/?priceId=pri_01m7wkzfepyrtbtcrqxf9895gn",
+          "description": "Paddle checkout link for StyleSync Pro ($7 one-time)."
+        },
+        "stylesync.encPassword": {
+          "type": "string",
+          "default": "",
+          "description": "Default encryption password — stored locally only, never uploaded or transmitted."
+        }
+      }
+    }
+  },
+  "scripts": {},
+  "dependencies": {}
+}
