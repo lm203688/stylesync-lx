@@ -1,4 +1,4 @@
-name: Publish Extension
+﻿name: Publish Extension
 
 on:
   workflow_dispatch:
@@ -19,3 +19,4 @@ jobs:
         with:
           node-version: 22
       - run: npx @vscode/vsce publish --oidc
+
