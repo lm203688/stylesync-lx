@@ -9,7 +9,7 @@ const treeProvider = require('./lib/treeProvider');
 // License / endpoint config
 // ---------------------------------------------------------------------------
 
-const DEFAULT_VERIFY_ENDPOINT = 'https://snapmark-license.61960005.workers.dev/verify';
+const DEFAULT_VERIFY_ENDPOINT = 'https://snapmark-license.463102527.workers.dev/verify';
 
 function readCfg() {
   const c = vscode.workspace.getConfiguration('stylesync');
@@ -41,6 +41,18 @@ async function verifyLicense(endpoint, license) {
 function registerCommands(context) {
   const tree = new treeProvider.ConfigTreeProvider(context);
   context.subscriptions.push(vscode.window.registerTreeDataProvider('stylesync-tree', tree));
+
+  // VS Code renders a tree view lazily: the panel shows a spinner until the provider fires
+  // onDidChangeTreeData at least once *after* the view has mounted. Nothing else fires it for
+  // this view, so the panel stayed blank on first open. The view may be created well after this
+  // extension activates, so run the refresh command on a short timer for a few seconds — enough
+  // for at least one refresh to land once the panel exists, and no cost after that.
+  let refreshTicks = 0;
+  const refreshTimer = setInterval(() => {
+    void vscode.commands.executeCommand('stylesync.refreshTree');
+    if (++refreshTicks >= 20) clearInterval(refreshTimer);
+  }, 250);
+  context.subscriptions.push({ dispose: () => clearInterval(refreshTimer) });
 
   // Refresh
   context.subscriptions.push(vscode.commands.registerCommand('stylesync.refreshTree', () => {
@@ -120,13 +132,13 @@ function registerCommands(context) {
     try {
       const raw = await vscode.workspace.fs.readFile(openUri[0]);
       const results = await treeProvider.doImport(raw, password);
-      let msg = 'StyleSync: import complete.\n';
-      for (const r of results) {
-        msg += r.status === 'ok'
-          ? `  ✓ ${r.target}: written\n`
-          : `  ⚠ ${r.target}: conflict detected — review manually\n`;
-      }
-      vscode.window.showInformationMessage(msg.trimEnd());
+      // One line: VS Code notification pills are single-line and clip any "\n" in the body,
+      // which truncated the per-file status the user most needs to see.
+      const written = results.filter(r => r.status === 'ok').length;
+      const flagged = results.filter(r => r.status !== 'ok').map(r => r.target).join(', ');
+      let msg = `StyleSync: import complete — ${written}/${results.length} written`;
+      if (flagged) msg += ` · conflict, review: ${flagged}`;
+      vscode.window.showInformationMessage(msg);
       tree.refresh();
     } catch (e) {
       vscode.window.showErrorMessage(`StyleSync: import failed — ${String(e.message || e)}`);

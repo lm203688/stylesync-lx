@@ -2,9 +2,14 @@
   "name": "stylesync-lx",
   "displayName": "StyleSync — Local Config Sync",
   "description": "Export and import VS Code config (settings, keybindings, snippets) as encrypted local ZIPs. No cloud. No Gist risk.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "LxStudio",
   "icon": "icon.png",
+  "screenshots": [
+    { "path": "./assets/screenshots/screenshot-01-config-list.png",    "markDownName": "Config List.md" },
+    { "path": "./assets/screenshots/screenshot-02-password-prompt.png","markDownName": "Password Prompt.md" },
+    { "path": "./assets/screenshots/screenshot-03-import-result.png",   "markDownName": "Import Result.md" }
+  ],
   "license": "SEE LICENSE IN LICENSE.md",
   "repository": {
     "type": "git",
@@ -100,7 +105,7 @@
       "properties": {
         "stylesync.verifyEndpoint": {
           "type": "string",
-          "default": "https://snapmark-license.61960005.workers.dev/verify",
+          "default": "https://snapmark-license.463102527.workers.dev/verify",
           "description": "License verification endpoint."
         },
         "stylesync.buyoutLink": {

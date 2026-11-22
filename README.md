@@ -51,7 +51,7 @@ Supported config types:
 ## Privacy & data handling
 
 - All config reads happen **locally** on your machine.
-- The only network call is to the license verification endpoint (`snapmark-license.61960005.workers.dev`) when activating a Pro license key.
+- The only network call is to the license verification endpoint (`snapmark-license.463102527.workers.dev`) when activating a Pro license key.
 - Encryption passwords are **never transmitted** — they stay in your VS Code input dialog.
 - See [privacy-policy.html](privacy-policy.html) for full details.
 

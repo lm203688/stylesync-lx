@@ -1,2 +1,3 @@
 **/*.py
 **/screenshot-guide.md
+materials/**

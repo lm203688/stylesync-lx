@@ -32,7 +32,7 @@ Unlock additional config types:
 - **Encryption**: Node.js built-in `crypto` module (AES-256-CBC + scrypt key derivation). No third-party crypto libraries.
 - **ZIP packaging**: JSZip v3 bundled inline.
 - **Platform support**: Windows, macOS, Linux (auto-detects VS Code user-data path).
-- **License verification**: Single POST to `snapmark-license.61960005.workers.dev/verify`; transmits only the license key string.
+- **License verification**: Single POST to `snapmark-license.463102527.workers.dev/verify`; transmits only the license key string.
 
 ### Who is this for?
 Developers who value privacy and want full ownership of their editor configuration—especially those working with sensitive project paths, internal tooling configs, or API keys stored in user settings.
