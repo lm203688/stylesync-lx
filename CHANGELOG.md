@@ -1,5 +1,9 @@
 # Changelog — StyleSync
 
+## 1.0.3 (2026-11-28)
+
+- Pro checkout now opens by default: `stylesync.buyoutLink` defaults to the reusable Paddle payment link ($7 one-time) on the LxStudio-branded checkout page.
+
 ## 1.0.0 (2026-11-20)
 
 **Initial public release.**

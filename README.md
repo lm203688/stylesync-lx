@@ -38,7 +38,7 @@ Supported config types:
 1. Open the **StyleSync** view from the activity bar (sync icon).
 2. Click the **+ Export** button → choose config files → enter encryption password → save the ZIP.
 3. To restore, click the **↓ Import** button → select the ZIP → enter the same password.
-4. (Optional) Set `stylesync.buyoutLink` in VS Code settings to unlock upgrade-to-Pro from the UI.
+4. To upgrade to Pro, click **StyleSync: Upgrade to Pro** — the secure Paddle checkout opens automatically (no settings needed).
 
 ## Keyboard shortcuts
 

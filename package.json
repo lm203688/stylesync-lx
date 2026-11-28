@@ -2,7 +2,7 @@
   "name": "stylesync-lx",
   "displayName": "StyleSync — Local Config Sync",
   "description": "Export and import VS Code config (settings, keybindings, snippets) as encrypted local ZIPs. No cloud. No Gist risk.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publisher": "LxStudio",
   "icon": "icon.png",
   "screenshots": [
@@ -110,7 +110,7 @@
         },
         "stylesync.buyoutLink": {
           "type": "string",
-          "default": "https://snapmark-checkout.pages.dev/?priceId=pri_01m7wkzfepyrtbtcrqxf9895gn",
+          "default": "https://snapmark-t3-checkout.pages.dev/pay?priceId=pri_01m7wkzfepyrtbtcrqxf9895gn",
           "description": "Paddle checkout link for StyleSync Pro ($7 one-time)."
         },
         "stylesync.encPassword": {
